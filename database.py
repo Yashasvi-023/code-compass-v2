@@ -14,6 +14,7 @@ import streamlit as st
 
 @st.cache_resource
 def get_db():
+
     uri = st.secrets["MONGO_URI"]
 
     client = MongoClient(
@@ -21,7 +22,6 @@ def get_db():
         serverSelectionTimeoutMS=10000
     )
 
-    # Force connection immediately
     client.admin.command("ping")
 
     db = client["anti_code_compass"]
