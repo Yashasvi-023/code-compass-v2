@@ -15,6 +15,31 @@ from database import (
 )
 from model import GitHubRAGModel
 
+
+from pymongo import MongoClient
+import pymongo
+import ssl
+
+st.write("PyMongo:", pymongo.version)
+st.write("OpenSSL:", ssl.OPENSSL_VERSION)
+
+uri = st.secrets["MONGO_URI"]
+
+try:
+    client = MongoClient(
+        uri,
+        serverSelectionTimeoutMS=10000
+    )
+
+    st.write(client.admin.command("ping"))
+
+except Exception as e:
+    st.exception(e)
+
+
+
+
+
 # ─────────────────────────────────────────────────────────────────────────────
 # Page config
 # ─────────────────────────────────────────────────────────────────────────────

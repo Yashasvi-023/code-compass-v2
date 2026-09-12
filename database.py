@@ -14,14 +14,26 @@ import streamlit as st
 
 @st.cache_resource
 def get_db():
-    """Return the database handle. Connection is cached for the app lifetime."""
     uri = st.secrets["MONGO_URI"]
-    client = MongoClient(uri, serverSelectionTimeoutMS=5000)
+
+    client = MongoClient(
+        uri,
+        serverSelectionTimeoutMS=10000
+    )
+
+    # Force connection immediately
+    client.admin.command("ping")
+
     db = client["anti_code_compass"]
 
-    # Ensure indexes
-    db.users.create_index([("email", ASCENDING)], unique=True)
-    db.chats.create_index([("user_id", ASCENDING), ("created_at", DESCENDING)])
+    db.users.create_index(
+        [("email", ASCENDING)],
+        unique=True
+    )
+
+    db.chats.create_index(
+        [("user_id", ASCENDING), ("created_at", DESCENDING)]
+    )
 
     return db
 

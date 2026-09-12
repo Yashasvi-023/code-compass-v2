@@ -1,5 +1,6 @@
-streamlit
 google-genai
 gitpython
-pymongo
 bcrypt
+streamlit
+pymongo
+python-dotenv
