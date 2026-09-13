@@ -1,5 +1,5 @@
 """
-app.py — Anti Code Compass: GitHub RAG Chatbot
+app.py — Code Compass: GitHub RAG Chatbot
   • Login / Sign-up
   • ChatGPT-style sidebar with chat history (stored in MongoDB)
   • Each repository load = a new chat session
@@ -19,7 +19,7 @@ from model import GitHubRAGModel
 # Page config
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Anti Code Compass",
+    page_title="Code Compass",
     page_icon="🧭",
     layout="wide",
     initial_sidebar_state="auto",
@@ -180,7 +180,7 @@ def render_auth():
     # Centered brand header
     st.markdown(
         '<div style="text-align:center;padding:40px 0 10px 0;">'
-        '<div class="brand">🧭 Anti Code Compass</div>'
+        '<div class="brand">🧭 Code Compass</div>'
         '<div style="color:#555;font-size:13px;margin-top:4px;">Understand any GitHub repository with AI</div>'
         '</div>',
         unsafe_allow_html=True
@@ -252,7 +252,7 @@ def render_sidebar():
 
     with st.sidebar:
         # Brand
-        st.markdown(f'<div class="brand">🧭 Anti Code Compass</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="brand">🧭 Code Compass</div>', unsafe_allow_html=True)
         st.markdown(
             f'<div style="color:#555;font-size:12px;margin-bottom:16px;">'
             f'Signed in as <b style="color:#7a7aaa">{user["full_name"]}</b></div>',
@@ -333,7 +333,7 @@ def render_chat():
             )
     else:
         st.markdown(
-            '<h3 style="margin:0;color:#a0aaff">🧭 Anti Code Compass</h3>'
+            '<h3 style="margin:0;color:#a0aaff">🧭 Code Compass</h3>'
             '<div style="color:#555;font-size:12px;">Load a GitHub repository to start chatting.</div>',
             unsafe_allow_html=True
         )
